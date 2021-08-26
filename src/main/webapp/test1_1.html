@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Test1 HTML</h1>
+<button id="btn">CLICK</button>
+
+<div id="result">
+
+</div>
+
+<script>
+    document.querySelector("#btn").addEventListener("click", function (){     //버튼을 클릭해서 서버랑 통신하는 애를 만들어줌.
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            const jsonStr = xhttp.responseText
+
+            console.log(jsonStr)
+
+            const  obj = JSON.parse(jsonStr)
+
+            console.log(obj)
+        }
+
+        xhttp.open("GET", "/time", true);   //true 비동기 여부. 옵션으로 지정. 기본은 비동기 true
+        xhttp.send();
+
+    },false)
+</script>
+
+</body>
+</html>
